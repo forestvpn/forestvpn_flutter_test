@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'list_of_news_widget.dart';
+import '../presentation/list_of_news_widget.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
 class MainScreenWidget extends StatefulWidget {

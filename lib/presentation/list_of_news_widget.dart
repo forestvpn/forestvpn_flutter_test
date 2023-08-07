@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:forestvpn_test/repositories/news/repository.dart';
 
 class ListOfNewsWidget extends StatefulWidget {
   const ListOfNewsWidget({super.key});
 
   @override
-  State<ListOfNewsWidget> createState() => _ListOfNewsWidgetState();
+  State<ListOfNewsWidget> createState() => ListOfNewsWidgetState();
 }
 
-class _ListOfNewsWidgetState extends State<ListOfNewsWidget> {
+class ListOfNewsWidgetState extends State<ListOfNewsWidget> {
+  void onNewTap(int index) {
+    final id = mockArticles[index].id;
+    Navigator.of(context).pushNamed('/main_screen/details', arguments: id);
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 10,
+      itemCount: mockArticles.length,
       itemExtent: 103,
       itemBuilder: (BuildContext context, int index) {
+        final news = mockArticles[index];
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 10),
           child: Stack(
@@ -33,47 +40,51 @@ class _ListOfNewsWidgetState extends State<ListOfNewsWidget> {
                   ],
                 ),
                 clipBehavior: Clip.hardEdge,
-                child: const Row(
+                child: Row(
                   children: [
                     Image(
-                      image: AssetImage('images/1stimage.png'),
+                      width: 90,
+                      height: 60,
+                      image: AssetImage(news.imageUrl),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 23,
                     ),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(
-                            height: 20,
+                          const SizedBox(
+                            height: 10,
                           ),
                           Text(
-                            "We are processing your request...",
+                            news.title,
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
                               letterSpacing: 0.32,
                             ),
                           ),
-                          SizedBox(
-                            height: 5,
+                          const SizedBox(
+                            height: 10,
                           ),
                           Text(
-                            "1 day ago",
+                            news.publicationDate.toString(),
                             maxLines: 2,
+                            // ignore: prefer_const_constructors
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w200,
                               color: Colors.grey,
+                              letterSpacing: 0.24,
                             ),
                           ),
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                   ],
@@ -83,9 +94,7 @@ class _ListOfNewsWidgetState extends State<ListOfNewsWidget> {
                 color: Colors.transparent,
                 child: InkWell(
                   borderRadius: BorderRadius.circular(9),
-                  onTap: () {
-                    // TODO: handle the press
-                  },
+                  onTap: () => onNewTap(index),
                 ),
               )
             ],
