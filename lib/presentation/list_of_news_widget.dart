@@ -26,7 +26,8 @@ class ListOfNewsWidgetState extends State<ListOfNewsWidget> {
           child: Stack(
             children: [
               Container(
-                //padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                //padding:
+                //const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   border: Border.all(color: Colors.black.withOpacity(0.2)),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'detail_of_new_widget_info.dart';
+
 class DetailOfNewWidget extends StatefulWidget {
   final String newsId;
   const DetailOfNewWidget({super.key, required this.newsId});
@@ -11,6 +13,12 @@ class DetailOfNewWidget extends StatefulWidget {
 class _DetailOfNewWidgetState extends State<DetailOfNewWidget> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      body: ListView(
+        children: const [
+          DetailOfNewWidgetInfo(),
+        ],
+      ),
+    );
   }
 }
