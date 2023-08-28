@@ -1,5 +1,5 @@
 class Article {
-  const Article({
+  Article({
     required this.id,
     required this.title,
     required this.publicationDate,
@@ -12,6 +12,6 @@ class Article {
   final String title;
   final DateTime publicationDate;
   final String imageUrl;
-  final bool readed;
+  bool readed;
   final String? description;
 }
