@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:forestvpn_test/consts/colors.dart';
+import 'package:forestvpn_test/screens/news_list_screen.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: MainColors.kWhiteColor,
+    ),
+  );
   runApp(const ForestVPNTestApp());
 }
 
@@ -11,11 +19,7 @@ class ForestVPNTestApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'ForestVPN test',
-      home: Scaffold(
-        body: Center(
-          child: Text('News screen'),
-        ),
-      ),
+      home: NewsListScreen(),
     );
   }
 }
