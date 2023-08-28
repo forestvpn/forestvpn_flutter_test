@@ -61,9 +61,12 @@ class NewsListScreen extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: _mockArticles.length,
                   itemBuilder: (context, index) {
+                    var differenceTime = DateTime.now().difference(_mockArticles[index].publicationDate).inDays;
                     return LatestNewsItemWidget(
                       image: _mockArticles[index].imageUrl,
                       title: _mockArticles[index].title,
+                      publicationDate: differenceTime,
+                      onTap: () {},
                     );
                   },
                 ),

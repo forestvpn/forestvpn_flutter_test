@@ -7,10 +7,14 @@ class LatestNewsItemWidget extends StatelessWidget {
     super.key,
     required this.image,
     required this.title,
+    required this.publicationDate,
+    required this.onTap,
   });
 
   final String image;
   final String title;
+  final int publicationDate;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +41,7 @@ class LatestNewsItemWidget extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: () {},
+          onTap: onTap,
           splashColor: Colors.transparent,
           borderRadius: BorderRadius.circular(9.0),
           child: Padding(
@@ -66,7 +70,7 @@ class LatestNewsItemWidget extends StatelessWidget {
                           style: MainStyles.kBlackColorW400(16.0),
                         ),
                         Text(
-                          title,
+                          publicationDate.toString() + ' ${publicationDate == 1 ? 'day' : 'days'} ago',
                           style: MainStyles.kGreyColorW400(12.0),
                         ),
                       ],
