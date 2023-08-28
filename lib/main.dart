@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:forestvpn_test/blocs/all_news_bloc/all_news_bloc.dart';
 import 'package:forestvpn_test/screens/news_list_screen.dart';
 
 void main() {
@@ -16,9 +18,14 @@ class ForestVPNTestApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'ForestVPN test',
-      home: NewsListScreen(),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider<AllNewsBloc>(create: (context) => AllNewsBloc()),
+        ],
+        child: const NewsListScreen(),
+      ),
     );
   }
 }

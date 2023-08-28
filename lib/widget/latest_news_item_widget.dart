@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:forestvpn_test/consts/colors.dart';
+import 'package:forestvpn_test/consts/strings.dart';
 import 'package:forestvpn_test/consts/styles.dart';
 
 class LatestNewsItemWidget extends StatelessWidget {
@@ -9,12 +10,14 @@ class LatestNewsItemWidget extends StatelessWidget {
     required this.title,
     required this.publicationDate,
     required this.onTap,
+    required this.readed,
   });
 
   final String image;
   final String title;
   final int publicationDate;
   final void Function() onTap;
+  final bool readed;
 
   @override
   Widget build(BuildContext context) {
@@ -69,9 +72,24 @@ class LatestNewsItemWidget extends StatelessWidget {
                           title,
                           style: MainStyles.kBlackColorW400(16.0),
                         ),
-                        Text(
-                          publicationDate.toString() + ' ${publicationDate == 1 ? 'day' : 'days'} ago',
-                          style: MainStyles.kGreyColorW400(12.0),
+                        Row(
+                          children: [
+                            Text(
+                              publicationDate.toString() + ' ${publicationDate == 1 ? 'day' : 'days'} ago',
+                              style: MainStyles.kGreyColorW400(12.0),
+                            ),
+                            const Expanded(child: SizedBox()),
+                            readed ? Text(
+                              Strings.read,
+                              style: MainStyles.kGreyColorW400(12.0),
+                            ) : const SizedBox(),
+                            const SizedBox(width: 6.0),
+                            readed ? const Icon(
+                              Icons.check_circle,
+                              color: MainColors.kGreyColor,
+                              size: 10.0,
+                            ) : const SizedBox(),
+                          ],
                         ),
                       ],
                     ),

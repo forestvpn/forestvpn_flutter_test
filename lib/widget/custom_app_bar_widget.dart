@@ -4,7 +4,12 @@ import 'package:forestvpn_test/consts/strings.dart';
 import 'package:forestvpn_test/consts/styles.dart';
 
 class CustomAppBarWidget extends StatelessWidget {
-  const CustomAppBarWidget({super.key});
+  const CustomAppBarWidget({
+    super.key,
+    required this.onTapReaded,
+  });
+
+  final void Function() onTapReaded;
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +38,12 @@ class CustomAppBarWidget extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: Padding(
                     padding: const EdgeInsets.only(right: 20.0),
-                    child: Text(
-                      Strings.markAllRead,
-                      style: MainStyles.kBlackColorW400(18.0),
+                    child: InkWell(
+                      onTap: onTapReaded,
+                      child: Text(
+                        Strings.markAllRead,
+                        style: MainStyles.kBlackColorW400(18.0),
+                      ),
                     ),
                   ),
                 ),
