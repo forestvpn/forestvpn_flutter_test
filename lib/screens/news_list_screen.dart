@@ -103,6 +103,16 @@ class _NewsListScreenState extends State<NewsListScreen> {
                               title: featuredArticles[index].title,
                               image: featuredArticles[index].imageUrl,
                               readed: featuredArticles[index].readed,
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => OneNewScreen(
+                                      articleId: featuredArticles[index].id,
+                                    ),
+                                  ),
+                                );
+                              },
                             );
                           },
                         ),
@@ -132,7 +142,7 @@ class _NewsListScreenState extends State<NewsListScreen> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => OneNewScreen(
-                                    article: latestArticles[index],
+                                    articleId: latestArticles[index].id,
                                   ),
                                 ),
                               );

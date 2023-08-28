@@ -23,6 +23,7 @@ class ForestVPNTestApp extends StatelessWidget {
       home: MultiBlocProvider(
         providers: [
           BlocProvider<AllNewsBloc>(create: (context) => AllNewsBloc()),
+          // BlocProvider<GetOneNewBloc>(create: (context) => GetOneNewBloc()),
         ],
         child: const NewsListScreen(),
       ),
