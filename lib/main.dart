@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:forestvpn_test/consts/colors.dart';
 import 'package:forestvpn_test/screens/news_list_screen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
-      statusBarColor: MainColors.kWhiteColor,
+      statusBarColor: Colors.transparent,
     ),
   );
   runApp(const ForestVPNTestApp());

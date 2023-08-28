@@ -3,6 +3,7 @@ import 'package:forestvpn_test/consts/colors.dart';
 import 'package:forestvpn_test/consts/strings.dart';
 import 'package:forestvpn_test/consts/styles.dart';
 import 'package:forestvpn_test/repositories/news/models/article.dart';
+import 'package:forestvpn_test/screens/one_new_screen.dart';
 import 'package:forestvpn_test/widget/custom_app_bar_widget.dart';
 import 'package:forestvpn_test/widget/featured_news_item_widget.dart';
 import 'package:forestvpn_test/widget/latest_news_item_widget.dart';
@@ -66,7 +67,9 @@ class NewsListScreen extends StatelessWidget {
                       image: _mockArticles[index].imageUrl,
                       title: _mockArticles[index].title,
                       publicationDate: differenceTime,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => OneNewScreen(article: _mockArticles[index],)));
+                      },
                     );
                   },
                 ),
