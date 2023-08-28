@@ -82,21 +82,28 @@ class _NewsListScreenState extends State<NewsListScreen> {
             SafeArea(
               child: Padding(
                 padding: const EdgeInsets.only(top: 20.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 20.0),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 28.0),
+                child: CustomScrollView(
+                  slivers: [
+                    SliverToBoxAdapter(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 28.0, top: 20.0),
                         child: Text(
                           Strings.featured,
                           style: MainStyles.kBlackColorW400(18.0),
                         ),
                       ),
-                      SizedBox(
-                        height: 340.0,
-                        child: PageView.builder(
+                    ),
+                    SliverAppBar(
+                      expandedHeight: 340.0,
+                      collapsedHeight: 200.0,
+                      elevation: 0,
+                      backgroundColor: Colors.transparent,
+                      floating: false,
+                      pinned: false,
+                      flexibleSpace: FlexibleSpaceBar(
+                        expandedTitleScale: 1,
+                        centerTitle: true,
+                        title: PageView.builder(
                           itemCount: featuredArticles.length,
                           itemBuilder: (context, index) {
                             return FeaturedNewsItemWidget(
@@ -117,15 +124,18 @@ class _NewsListScreenState extends State<NewsListScreen> {
                           },
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 28.0),
+                    ),
+                    SliverToBoxAdapter(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 28.0, bottom: 20.0),
                         child: Text(
                           Strings.latestNews,
                           style: MainStyles.kBlackColorW400(18.0),
                         ),
                       ),
-                      const SizedBox(height: 20.0),
-                      ListView.builder(
+                    ),
+                    SliverToBoxAdapter(
+                      child: ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
                         padding: const EdgeInsets.symmetric(horizontal: 28.0),
                         shrinkWrap: true,
@@ -150,8 +160,8 @@ class _NewsListScreenState extends State<NewsListScreen> {
                           );
                         },
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
