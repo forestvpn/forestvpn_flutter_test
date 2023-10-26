@@ -1,21 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:forestvpn_test/utils/utils.dart';
 
-void main() {
+import 'news_app.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializaeBeforeAppStart();
   runApp(const ForestVPNTestApp());
-}
-
-class ForestVPNTestApp extends StatelessWidget {
-  const ForestVPNTestApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'ForestVPN test',
-      home: Scaffold(
-        body: Center(
-          child: Text('News screen'),
-        ),
-      ),
-    );
-  }
 }
