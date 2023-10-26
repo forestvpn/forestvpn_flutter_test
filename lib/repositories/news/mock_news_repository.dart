@@ -1,4 +1,6 @@
 import 'package:forestvpn_test/repositories/news/repository.dart';
+import 'package:html/parser.dart' show parse;
+import 'package:http/http.dart' as http;
 
 class MockNewsRepository implements AbstractNewsRepository {
   @override
@@ -15,6 +17,21 @@ class MockNewsRepository implements AbstractNewsRepository {
   @override
   Future<List<Article>> getFeaturedArticles() async {
     return _mockArticles;
+  }
+
+  @override
+  Future<String?> extractDirectImageUrl(String url) async {
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      var document = parse(response.body);
+      var metaElement = document.querySelector('meta[property="og:image"]');
+      var imageUrl = metaElement?.attributes['content'];
+
+      return imageUrl;
+    } else {
+      return null;
+    }
   }
 }
 
