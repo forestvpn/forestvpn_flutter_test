@@ -125,14 +125,12 @@ class _ArticleHeaderWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 48),
             child: TranslucentBackground(
-              child: Flexible(
-                child: Text(
-                  article.title,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: theme.textTheme.headlineSmall
-                      ?.copyWith(color: Colors.white, fontSize: 28),
-                ),
+              child: Text(
+                article.title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.headlineSmall
+                    ?.copyWith(color: Colors.white, fontSize: 28),
               ),
             ),
           ),

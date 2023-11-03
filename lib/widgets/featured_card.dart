@@ -51,17 +51,15 @@ class FeaturedCard extends StatelessWidget {
                   horizontal: 40,
                   vertical: 48,
                 ),
-                child: Flexible(
-                  child: TranslucentBackground(
-                    child: Text(
-                      article.title,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 28,
-                      ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
+                child: TranslucentBackground(
+                  child: Text(
+                    article.title,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 28,
                     ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ),
