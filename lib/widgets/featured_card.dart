@@ -4,6 +4,7 @@ import 'package:forestvpn_test/repositories/news/models/article.dart';
 
 import '../article_page.dart';
 import '../news_list/cubit/news_list_cubit.dart';
+import '../theme.dart';
 import 'translucent_background.dart';
 
 class FeaturedCard extends StatelessWidget {
@@ -54,10 +55,7 @@ class FeaturedCard extends StatelessWidget {
                 child: TranslucentBackground(
                   child: Text(
                     article.title,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 28,
-                    ),
+                    style: AppTheme.cardHeadlineTextStyle,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),

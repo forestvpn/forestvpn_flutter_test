@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../theme.dart';
 import '../widgets/latest_news_card.dart';
 import 'cubit/news_list_cubit.dart';
 
@@ -20,7 +21,7 @@ class LatestNewsWidget extends StatelessWidget {
               children: state.articles
                   .expand((article) => [
                         LatestNewsCard(article: article),
-                        const SizedBox(height: 20),
+                        AppTheme.verticalSpacing,
                       ])
                   .toList());
         }

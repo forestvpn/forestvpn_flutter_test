@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forestvpn_test/article/cubit/article_cubit.dart';
 import 'package:forestvpn_test/repositories/news/abstract_news_repository.dart';
+import 'package:forestvpn_test/theme.dart';
 
 import 'repositories/news/models/article.dart';
 import 'widgets/translucent_background.dart';
@@ -49,7 +50,7 @@ class ArticlePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       _ArticleHeaderWidget(article: state.article),
-                      const SizedBox(height: 20),
+                      AppTheme.verticalSpacing,
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 21),
                         child: Text(
@@ -57,7 +58,7 @@ class ArticlePage extends StatelessWidget {
                           style: theme.textTheme.bodyLarge,
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      AppTheme.verticalSpacing,
                     ],
                   ),
                 ),
@@ -129,8 +130,7 @@ class _ArticleHeaderWidget extends StatelessWidget {
                 article.title,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: theme.textTheme.headlineSmall
-                    ?.copyWith(color: Colors.white, fontSize: 28),
+                style: AppTheme.cardHeadlineTextStyle,
               ),
             ),
           ),

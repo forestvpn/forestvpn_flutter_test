@@ -5,6 +5,7 @@ import 'package:forestvpn_test/news_list/latest_news_widget.dart';
 
 import 'news_list/cubit/news_list_cubit.dart';
 import 'repositories/news/repository.dart';
+import 'theme.dart';
 
 class NotificationsPage extends StatelessWidget {
   const NotificationsPage({Key? key}) : super(key: key);
@@ -44,17 +45,17 @@ class NotificationsPage extends StatelessWidget {
                 'Featured',
                 style: theme.textTheme.titleLarge,
               ),
-              const SizedBox(height: 20),
+              AppTheme.verticalSpacing,
               SizedBox(
                 height: MediaQuery.of(context).size.height / 3,
                 child: const FeaturedNewsWidget(),
               ),
-              const SizedBox(height: 20),
+              AppTheme.verticalSpacing,
               Text(
                 'Latest news',
                 style: theme.textTheme.titleLarge,
               ),
-              const SizedBox(height: 20),
+              AppTheme.verticalSpacing,
               const LatestNewsWidget(),
             ],
           ),

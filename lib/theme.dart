@@ -12,4 +12,8 @@ abstract class AppTheme {
           ),
         ),
       );
+
+  static const verticalSpacing = SizedBox(height: 20);
+  static const cardHeadlineTextStyle =
+      TextStyle(color: Colors.white, fontSize: 28);
 }
