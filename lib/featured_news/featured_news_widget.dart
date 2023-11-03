@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:forestvpn_test/repositories/news/abstract_news_repository.dart';
 
-import '../widgets/featured_card.dart';
+import '../repositories/news/repository.dart';
 import 'cubit/featured_news_list_cubit.dart';
+import 'featured_card.dart';
 
 class FeaturedNewsWidget extends StatelessWidget {
   const FeaturedNewsWidget({Key? key}) : super(key: key);

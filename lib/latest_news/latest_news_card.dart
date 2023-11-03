@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:forestvpn_test/news_list/cubit/news_list_cubit.dart';
-import 'package:forestvpn_test/repositories/news/models/article.dart';
 
-import '../article_page.dart';
+import '../article/article_page.dart';
+import '../repositories/news/repository.dart';
 import '../utils/published_date_string.dart';
+import 'cubit/latest_news_list_cubit.dart';
 
 class LatestNewsCard extends StatelessWidget {
   final Article article;
@@ -24,7 +24,7 @@ class LatestNewsCard extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Navigator.of(context).push(ArticlePage.route(article.id));
-          context.read<NewsListCubit>().markArticleAsRead(article.id);
+          context.read<LatestNewsListCubit>().markArticleAsRead(article.id);
         },
         child: SizedBox(
           height: MediaQuery.of(context).size.height / 9,

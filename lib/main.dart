@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:forestvpn_test/notifications_page.dart';
-import 'package:forestvpn_test/repositories/news/repository.dart';
-import 'package:forestvpn_test/theme.dart';
+
+import 'news/news_page.dart';
+import 'repositories/news/repository.dart';
+import 'theme.dart';
 
 void main() {
   final _mockNewsRepository = MockNewsRepository();
@@ -25,7 +26,7 @@ class ForestVPNTestApp extends StatelessWidget {
       child: MaterialApp(
         title: 'ForestVPN test',
         theme: AppTheme.lightTheme(),
-        home: const NotificationsPage(),
+        home: const NewsPage(),
       ),
     );
   }

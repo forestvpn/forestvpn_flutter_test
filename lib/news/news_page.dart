@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:forestvpn_test/featured_news/featured_news_widget.dart';
-import 'package:forestvpn_test/news_list/latest_news_widget.dart';
 
-import 'news_list/cubit/news_list_cubit.dart';
-import 'repositories/news/repository.dart';
-import 'theme.dart';
+import '../featured_news/featured_news_widget.dart';
+import '../latest_news/cubit/latest_news_list_cubit.dart';
+import '../latest_news/latest_news_widget.dart';
+import '../repositories/news/repository.dart';
+import '../theme.dart';
 
-class NotificationsPage extends StatelessWidget {
-  const NotificationsPage({Key? key}) : super(key: key);
+class NewsPage extends StatelessWidget {
+  const NewsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class NotificationsPage extends StatelessWidget {
 
     return BlocProvider(
       create: (context) =>
-          NewsListCubit(context.read<AbstractNewsRepository>()),
+          LatestNewsListCubit(context.read<AbstractNewsRepository>()),
       child: Scaffold(
         appBar: AppBar(
           title: const Text(
@@ -37,7 +37,7 @@ class NotificationsPage extends StatelessWidget {
                   style: theme.appBarTheme.titleTextStyle,
                 ),
                 onPressed: () =>
-                    context.read<NewsListCubit>().markAllArticlesAsRead(),
+                    context.read<LatestNewsListCubit>().markAllArticlesAsRead(),
               ),
             )
           ],

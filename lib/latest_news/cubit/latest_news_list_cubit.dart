@@ -1,25 +1,26 @@
 import 'package:bloc/bloc.dart';
-import 'package:forestvpn_test/repositories/news/repository.dart';
 import 'package:meta/meta.dart';
 
-part 'news_list_state.dart';
+import '../../repositories/news/repository.dart';
 
-class NewsListCubit extends Cubit<NewsListState> {
+part 'latest_news_list_state.dart';
+
+class LatestNewsListCubit extends Cubit<LatestNewsListState> {
   final AbstractNewsRepository _newsRepository;
 
-  NewsListCubit(this._newsRepository) : super(NewsListInitial()) {
+  LatestNewsListCubit(this._newsRepository) : super(LatestNewsListInitial()) {
     fetchArticles();
   }
 
   Future<void> fetchArticles() async {
-    emit(NewsListLoading());
+    emit(LatestNewsListLoading());
 
     try {
       final articles = await _newsRepository.getLatestArticles();
 
-      emit(NewsListLoaded(articles));
+      emit(LatestNewsListLoaded(articles));
     } on Exception {
-      emit(NewsListError());
+      emit(LatestNewsListError());
     }
   }
 

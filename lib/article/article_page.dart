@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:forestvpn_test/article/cubit/article_cubit.dart';
-import 'package:forestvpn_test/repositories/news/abstract_news_repository.dart';
-import 'package:forestvpn_test/theme.dart';
 
-import 'repositories/news/models/article.dart';
-import 'widgets/translucent_background.dart';
+import '../repositories/news/repository.dart';
+import '../theme.dart';
+import '../widgets/translucent_background.dart';
+import 'cubit/article_cubit.dart';
 
 class ArticlePage extends StatelessWidget {
   const ArticlePage._();
