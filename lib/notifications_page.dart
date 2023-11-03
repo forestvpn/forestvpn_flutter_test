@@ -39,7 +39,7 @@ class NotificationsPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             SizedBox(
-              height: MediaQuery.of(context).size.height / 4,
+              height: MediaQuery.of(context).size.height / 3,
               child: const FeaturedNewsWidget(),
             ),
             const SizedBox(height: 20),

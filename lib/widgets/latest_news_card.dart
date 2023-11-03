@@ -30,12 +30,16 @@ class LatestNewsCard extends StatelessWidget {
                   flex: 1,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(12),
-                    child: Image.network(
-                      article.imageUrl,
-                      errorBuilder: (_, __, ___) => Center(
-                        child: Icon(
-                          Icons.error,
-                          color: theme.colorScheme.error,
+                    child: Container(
+                      constraints: const BoxConstraints.expand(),
+                      child: Image.network(
+                        article.imageUrl,
+                        fit: BoxFit.fill,
+                        errorBuilder: (_, __, ___) => Center(
+                          child: Icon(
+                            Icons.error,
+                            color: theme.colorScheme.error,
+                          ),
                         ),
                       ),
                     ),

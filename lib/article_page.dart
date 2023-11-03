@@ -5,6 +5,7 @@ import 'package:forestvpn_test/article/cubit/article_cubit.dart';
 import 'package:forestvpn_test/repositories/news/abstract_news_repository.dart';
 
 import 'repositories/news/models/article.dart';
+import 'widgets/translucent_background.dart';
 
 class ArticlePage extends StatelessWidget {
   const ArticlePage._();
@@ -123,16 +124,11 @@ class _ArticleHeaderWidget extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 48),
-            child: Container(
-              padding: const EdgeInsets.all(4),
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(12),
-              ),
+            child: TranslucentBackground(
               child: Flexible(
                 child: Text(
                   article.title,
-                  maxLines: 8,
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: theme.textTheme.headlineSmall
                       ?.copyWith(color: Colors.white, fontSize: 28),
