@@ -18,13 +18,21 @@ class MockNewsRepository implements AbstractNewsRepository {
   }
 
   @override
-  Future<void> readArticle(String id) async {
+  Future<void> markArticleAsRead(String id) async {
     final articleIndex = _mockArticles.indexWhere((e) => e.id == id);
 
     if (articleIndex == -1) throw StateError('No article with id $id');
 
     final editedArticle = _mockArticles[articleIndex].copyWith(readed: true);
     _mockArticles[articleIndex] = editedArticle;
+  }
+
+  @override
+  Future<void> markAllArticlesAsRead() async {
+    for (var i = 0; i < _mockArticles.length; i++) {
+      final readArticle = _mockArticles[i].copyWith(readed: true);
+      _mockArticles[i] = readArticle;
+    }
   }
 }
 

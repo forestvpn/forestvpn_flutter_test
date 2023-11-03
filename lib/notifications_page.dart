@@ -14,31 +14,36 @@ class NotificationsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Notifications'),
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: Colors.black,
+    return BlocProvider(
+      create: (context) =>
+          NewsListCubit(context.read<AbstractNewsRepository>()),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Notifications',
           ),
-          onPressed: () {},
-        ),
-        actions: [
-          TextButton(
-            child: Text(
-              'Mark all as read',
-              style: theme.appBarTheme.titleTextStyle,
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black,
             ),
             onPressed: () {},
-          )
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 28),
-        child: BlocProvider(
-          create: (context) =>
-              NewsListCubit(context.read<AbstractNewsRepository>()),
+          ),
+          actions: [
+            Builder(
+              builder: (context) => TextButton(
+                child: Text(
+                  'Mark all as read',
+                  style: theme.appBarTheme.titleTextStyle,
+                ),
+                onPressed: () =>
+                    context.read<NewsListCubit>().markAllArticlesAsRead(),
+              ),
+            )
+          ],
+        ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 28),
           child: ListView(
             children: [
               Text(

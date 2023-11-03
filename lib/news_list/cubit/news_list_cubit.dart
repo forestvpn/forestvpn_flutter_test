@@ -15,7 +15,7 @@ class NewsListCubit extends Cubit<NewsListState> {
     emit(NewsListLoading());
 
     try {
-      final articles = await _newsRepository.getFeaturedArticles();
+      final articles = await _newsRepository.getLatestArticles();
 
       emit(NewsListLoaded(articles));
     } on Exception {
@@ -25,11 +25,17 @@ class NewsListCubit extends Cubit<NewsListState> {
 
   Future<void> markArticleAsRead(String articleId) async {
     try {
-      await _newsRepository.readArticle(articleId);
+      await _newsRepository.markArticleAsRead(articleId);
 
       await fetchArticles();
     } on Exception {
       return;
     }
+  }
+
+  Future<void> markAllArticlesAsRead() async {
+    await _newsRepository.markAllArticlesAsRead();
+
+    await fetchArticles();
   }
 }
