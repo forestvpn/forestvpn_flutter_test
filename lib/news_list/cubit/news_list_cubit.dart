@@ -22,4 +22,14 @@ class NewsListCubit extends Cubit<NewsListState> {
       emit(NewsListError());
     }
   }
+
+  Future<void> markArticleAsRead(String articleId) async {
+    try {
+      await _newsRepository.readArticle(articleId);
+
+      await fetchArticles();
+    } on Exception {
+      return;
+    }
+  }
 }

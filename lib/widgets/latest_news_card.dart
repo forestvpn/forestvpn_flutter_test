@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:forestvpn_test/news_list/cubit/news_list_cubit.dart';
 import 'package:forestvpn_test/repositories/news/models/article.dart';
 
 import '../article_page.dart';
@@ -14,11 +16,16 @@ class LatestNewsCard extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Card(
+      color:
+          article.readed ? const Color(0xFFF5F5F5) : theme.colorScheme.surface,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(9),
       ),
       child: InkWell(
-        onTap: () => Navigator.of(context).push(ArticlePage.route(article.id)),
+        onTap: () {
+          Navigator.of(context).push(ArticlePage.route(article.id));
+          context.read<NewsListCubit>().markArticleAsRead(article.id);
+        },
         child: SizedBox(
           height: MediaQuery.of(context).size.height / 9,
           child: Padding(

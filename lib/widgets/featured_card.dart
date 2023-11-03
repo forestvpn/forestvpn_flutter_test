@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forestvpn_test/repositories/news/models/article.dart';
 
 import '../article_page.dart';
+import '../news_list/cubit/news_list_cubit.dart';
 import 'translucent_background.dart';
 
 class FeaturedCard extends StatelessWidget {
@@ -14,7 +16,10 @@ class FeaturedCard extends StatelessWidget {
     final theme = Theme.of(context);
 
     return InkWell(
-      onTap: () => Navigator.of(context).push(ArticlePage.route(article.id)),
+      onTap: () {
+        Navigator.of(context).push(ArticlePage.route(article.id));
+        context.read<NewsListCubit>().markArticleAsRead(article.id);
+      },
       child: SizedBox(
         width: MediaQuery.of(context).size.width - 55,
         child: Card(
