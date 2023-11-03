@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:forestvpn_test/repositories/news/models/article.dart';
 
+import '../article_page.dart';
+
 class FeaturedCard extends StatelessWidget {
   final Article article;
 
@@ -14,7 +16,8 @@ class FeaturedCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
-      child: GestureDetector(
+      child: InkWell(
+        onTap: () => Navigator.of(context).push(ArticlePage.route(article.id)),
         child: SizedBox(
           width: MediaQuery.of(context).size.width - 65,
           child: ClipRRect(
