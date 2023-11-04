@@ -11,7 +11,7 @@ class ArticleCubit extends Cubit<ArticleState> {
   final String articleId;
 
   ArticleCubit({required this.newsRepository, required this.articleId})
-      : super(ArticleInitial()) {
+      : super(ArticleLoading()) {
     fetchArticle(articleId);
   }
 

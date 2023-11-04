@@ -10,7 +10,7 @@ class FeaturedNewsListCubit extends Cubit<FeaturedNewsListState> {
   final AbstractNewsRepository _newsRepository;
 
   FeaturedNewsListCubit(this._newsRepository)
-      : super(FeaturedNewsListInitial()) {
+      : super(FeaturedNewsListLoading()) {
     fetchArticles();
   }
 

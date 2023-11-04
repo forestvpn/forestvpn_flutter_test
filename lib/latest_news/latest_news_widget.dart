@@ -12,7 +12,7 @@ class LatestNewsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LatestNewsListCubit, LatestNewsListState>(
       builder: (context, state) {
-        if (state is LatestNewsListInitial || state is LatestNewsListLoading) {
+        if (state is LatestNewsListLoading) {
           return const Center(child: CircularProgressIndicator());
         }
 

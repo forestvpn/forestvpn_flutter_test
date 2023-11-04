@@ -49,8 +49,7 @@ class _FeaturedNewsSliverHeaderDelegate extends SliverPersistentHeaderDelegate {
   ) {
     return BlocBuilder<FeaturedNewsListCubit, FeaturedNewsListState>(
       builder: (context, state) {
-        if (state is FeaturedNewsListInitial ||
-            state is FeaturedNewsListLoading) {
+        if (state is FeaturedNewsListLoading) {
           return const Center(child: CircularProgressIndicator());
         }
 

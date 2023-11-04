@@ -8,7 +8,7 @@ part 'latest_news_list_state.dart';
 class LatestNewsListCubit extends Cubit<LatestNewsListState> {
   final AbstractNewsRepository _newsRepository;
 
-  LatestNewsListCubit(this._newsRepository) : super(LatestNewsListInitial()) {
+  LatestNewsListCubit(this._newsRepository) : super(LatestNewsListLoading()) {
     fetchArticles();
   }
 

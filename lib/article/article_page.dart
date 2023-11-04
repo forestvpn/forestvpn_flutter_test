@@ -35,7 +35,7 @@ class ArticlePage extends StatelessWidget {
       extendBodyBehindAppBar: true,
       body: BlocBuilder<ArticleCubit, ArticleState>(
         builder: (context, state) {
-          if (state is ArticleInitial || state is ArticleLoading) {
+          if (state is ArticleLoading) {
             return const Center(child: CircularProgressIndicator());
           }
 
@@ -61,23 +61,7 @@ class ArticlePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Positioned(
-                  top: 64,
-                  child: IconButton(
-                    icon: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.1),
-                        shape: BoxShape.circle,
-                      ),
-                      padding: const EdgeInsets.all(2),
-                      alignment: Alignment.centerRight,
-                      child: const Icon(Icons.arrow_back_ios),
-                    ),
-                    splashRadius: 2,
-                    color: Colors.white,
-                    onPressed: () => Navigator.pop(context),
-                  ),
-                ),
+                const Positioned(top: 64, child: _BackButton()),
               ],
             );
           }
@@ -135,6 +119,28 @@ class _ArticleHeaderWidget extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _BackButton extends StatelessWidget {
+  const _BackButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: Container(
+        decoration: BoxDecoration(
+          color: Colors.black.withOpacity(0.1),
+          shape: BoxShape.circle,
+        ),
+        padding: const EdgeInsets.all(2),
+        alignment: Alignment.centerRight,
+        child: const Icon(Icons.arrow_back_ios),
+      ),
+      splashRadius: 2,
+      color: Colors.white,
+      onPressed: () => Navigator.pop(context),
     );
   }
 }

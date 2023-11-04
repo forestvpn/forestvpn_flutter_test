@@ -19,9 +19,7 @@ class NewsPage extends StatelessWidget {
           LatestNewsListCubit(context.read<AbstractNewsRepository>()),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'Notifications',
-          ),
+          title: const Text('Notifications'),
           leading: IconButton(
             icon: const Icon(
               Icons.arrow_back_ios,
@@ -29,18 +27,7 @@ class NewsPage extends StatelessWidget {
             ),
             onPressed: () {},
           ),
-          actions: [
-            Builder(
-              builder: (context) => TextButton(
-                child: Text(
-                  'Mark all as read',
-                  style: theme.appBarTheme.titleTextStyle,
-                ),
-                onPressed: () =>
-                    context.read<LatestNewsListCubit>().markAllArticlesAsRead(),
-              ),
-            )
-          ],
+          actions: const [_MarkAllAsReadButton()],
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 28),
@@ -77,6 +64,22 @@ class NewsPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _MarkAllAsReadButton extends StatelessWidget {
+  const _MarkAllAsReadButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      child: Text(
+        'Mark all as read',
+        style: Theme.of(context).appBarTheme.titleTextStyle,
+      ),
+      onPressed: () =>
+          context.read<LatestNewsListCubit>().markAllArticlesAsRead(),
     );
   }
 }
