@@ -15,19 +15,20 @@ class LatestNewsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Card(
-      color:
-          article.readed ? const Color(0xFFF5F5F5) : theme.colorScheme.surface,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(9),
-      ),
-      child: InkWell(
-        onTap: () {
-          Navigator.of(context).push(ArticlePage.route(article.id));
-          context.read<LatestNewsListCubit>().markArticleAsRead(article.id);
-        },
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height / 9,
+    return SizedBox(
+      height: MediaQuery.of(context).size.height / 8,
+      child: Card(
+        color: article.readed
+            ? const Color(0xFFF5F5F5)
+            : theme.colorScheme.surface,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(9),
+        ),
+        child: InkWell(
+          onTap: () {
+            Navigator.of(context).push(ArticlePage.route(article.id));
+            context.read<LatestNewsListCubit>().markArticleAsRead(article.id);
+          },
           child: Padding(
             padding:
                 const EdgeInsets.only(left: 20, top: 20, bottom: 23, right: 35),

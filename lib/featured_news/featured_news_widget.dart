@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:forestvpn_test/latest_news/latest_news_card.dart';
 
 import '../repositories/news/repository.dart';
 import 'cubit/featured_news_list_cubit.dart';
@@ -13,16 +14,39 @@ class FeaturedNewsWidget extends StatelessWidget {
     return BlocProvider(
       create: (context) =>
           FeaturedNewsListCubit(context.read<AbstractNewsRepository>()),
-      child: const _FeaturedNewsView(),
+      child: SliverPersistentHeader(
+        delegate: _FeaturedNewsSliverHeaderDelegate(
+          expandedHeight: MediaQuery.of(context).size.height / 3,
+          collapsedHeight: MediaQuery.of(context).size.height / 8,
+        ),
+      ),
     );
   }
 }
 
-class _FeaturedNewsView extends StatelessWidget {
-  const _FeaturedNewsView({Key? key}) : super(key: key);
+class _FeaturedNewsSliverHeaderDelegate extends SliverPersistentHeaderDelegate {
+  final double expandedHeight;
+  final double collapsedHeight;
+
+  _FeaturedNewsSliverHeaderDelegate({
+    required this.expandedHeight,
+    required this.collapsedHeight,
+  });
 
   @override
-  Widget build(BuildContext context) {
+  double get minExtent => collapsedHeight;
+
+  @override
+  double get maxExtent => expandedHeight;
+
+  int _openArticleIndex = 0;
+
+  @override
+  Widget build(
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
     return BlocBuilder<FeaturedNewsListCubit, FeaturedNewsListState>(
       builder: (context, state) {
         if (state is FeaturedNewsListInitial ||
@@ -31,16 +55,50 @@ class _FeaturedNewsView extends StatelessWidget {
         }
 
         if (state is FeaturedNewsListLoaded) {
-          return ListView(
-            scrollDirection: Axis.horizontal,
-            children: state.articles
-                .map((article) => FeaturedCard(article: article))
-                .toList(),
-          );
+          final threshold = (maxExtent - minExtent) / 2 + minExtent * 0.8;
+
+          final childToShow = shrinkOffset > threshold
+              ? LatestNewsCard(article: state.articles[_openArticleIndex])
+              : _FeaturedNewsCarousel(
+                  initialPageIndex: _openArticleIndex,
+                  articles: state.articles,
+                  onPageChanged: (index) => _openArticleIndex = index,
+                );
+
+          return childToShow;
         }
 
         return const Center(child: Text('Error'));
       },
+    );
+  }
+
+  @override
+  bool shouldRebuild(_FeaturedNewsSliverHeaderDelegate oldDelegate) {
+    return expandedHeight != oldDelegate.expandedHeight ||
+        collapsedHeight != oldDelegate.collapsedHeight;
+  }
+}
+
+class _FeaturedNewsCarousel extends StatelessWidget {
+  final int initialPageIndex;
+  final List<Article> articles;
+  final void Function(int) onPageChanged;
+
+  const _FeaturedNewsCarousel({
+    Key? key,
+    required this.initialPageIndex,
+    required this.articles,
+    required this.onPageChanged,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return PageView(
+      controller: PageController(initialPage: initialPageIndex),
+      onPageChanged: onPageChanged,
+      children:
+          articles.map((article) => FeaturedCard(article: article)).toList(),
     );
   }
 }

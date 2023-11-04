@@ -79,4 +79,26 @@ To continue to enjoy ForestVPN without interruptions, please upgrade to our Prem
         '''Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
 The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.''',
   ),
+  Article(
+    id: '1108389a-b3db-11ec-b909-0242ac120004',
+    title: 'We are processing your request...',
+    publicationDate: DateTime.now().subtract(const Duration(days: 1)),
+    imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/e/ef/Programming_code.jpg',
+    description: '''Please excuse the interruption.  
+Due to Google's efforts to maintain a “safe ads ecosystem” for its advertisers, publishers and users from fraud and bad experiences, Google has placed restrictions on our ad serving that limit our ability to provide free VPN services. 
+Regrettably, this is beyond our control.  
+To continue to enjoy ForestVPN without interruptions, please upgrade to our Premium version.''',
+  ),
+  Article(
+    id: '1108389a-b3db-11ec-b909-0242ac120003',
+    title: 'We are processing your request...',
+    publicationDate: DateTime.now().subtract(const Duration(days: 1)),
+    imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/e/ef/Programming_code.jpg',
+    description: '''Please excuse the interruption.  
+Due to Google's efforts to maintain a “safe ads ecosystem” for its advertisers, publishers and users from fraud and bad experiences, Google has placed restrictions on our ad serving that limit our ability to provide free VPN services. 
+Regrettably, this is beyond our control.  
+To continue to enjoy ForestVPN without interruptions, please upgrade to our Premium version.''',
+  ),
 ];

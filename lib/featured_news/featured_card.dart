@@ -21,48 +21,42 @@ class FeaturedCard extends StatelessWidget {
         Navigator.of(context).push(ArticlePage.route(article.id));
         context.read<LatestNewsListCubit>().markArticleAsRead(article.id);
       },
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width - 55,
-        child: Card(
-          elevation: 2,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Stack(
-            alignment: Alignment.bottomLeft,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Container(
-                  constraints: const BoxConstraints.expand(),
-                  child: Image.network(
-                    article.imageUrl,
-                    errorBuilder: (_, __, ___) => Center(
-                      child: Icon(
-                        Icons.error,
-                        color: theme.colorScheme.error,
-                      ),
+      child: Card(
+        elevation: 2,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Stack(
+          alignment: Alignment.bottomLeft,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Container(
+                constraints: const BoxConstraints.expand(),
+                child: Image.network(
+                  article.imageUrl,
+                  errorBuilder: (_, __, ___) => Center(
+                    child: Icon(
+                      Icons.error,
+                      color: theme.colorScheme.error,
                     ),
-                    fit: BoxFit.cover,
                   ),
+                  fit: BoxFit.cover,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 40,
-                  vertical: 48,
-                ),
-                child: TranslucentBackground(
-                  child: Text(
-                    article.title,
-                    style: AppTheme.cardHeadlineTextStyle,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 40, right: 40, bottom: 48),
+              child: TranslucentBackground(
+                child: Text(
+                  article.title,
+                  style: AppTheme.cardHeadlineTextStyle,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

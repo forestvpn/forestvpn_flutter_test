@@ -44,24 +44,35 @@ class NewsPage extends StatelessWidget {
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 28),
-          child: ListView(
-            children: [
-              Text(
-                'Featured',
-                style: theme.textTheme.titleLarge,
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Featured',
+                      style: theme.textTheme.titleLarge,
+                    ),
+                    AppTheme.verticalSpacing,
+                  ],
+                ),
               ),
-              AppTheme.verticalSpacing,
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 3,
-                child: const FeaturedNewsWidget(),
+              const FeaturedNewsWidget(),
+              SliverToBoxAdapter(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AppTheme.verticalSpacing,
+                    Text(
+                      'Latest news',
+                      style: theme.textTheme.titleLarge,
+                    ),
+                    AppTheme.verticalSpacing,
+                    const LatestNewsWidget(),
+                  ],
+                ),
               ),
-              AppTheme.verticalSpacing,
-              Text(
-                'Latest news',
-                style: theme.textTheme.titleLarge,
-              ),
-              AppTheme.verticalSpacing,
-              const LatestNewsWidget(),
             ],
           ),
         ),
